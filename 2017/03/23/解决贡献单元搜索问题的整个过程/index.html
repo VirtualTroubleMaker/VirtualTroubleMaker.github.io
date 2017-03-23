@@ -76,6 +76,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
 
@@ -92,8 +94,7 @@
 <meta name="description" content="1. 思维导图的力量之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。
 2. 测试插入图片，七牛云存储生成外链
 3. 测试公式3.1 行内公式我是一只快乐的小跳蛙$$J(\theta) = \frac 1 2 \sum{i=1}^m (h\theta(x^{(i)})-y^{(i)})^2$$
-$AG A\Gamma$
-\(x=\frac{-b\pm\sqrt">
+出错的原因是markdown和mathjax冲突，两个下划线之间的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决贡献单元搜索的整个过程">
 <meta property="og:url" content="http://yoursite.com/2017/03/23/解决贡献单元搜索问题的整个过程/index.html">
@@ -101,17 +102,15 @@ $AG A\Gamma$
 <meta property="og:description" content="1. 思维导图的力量之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。
 2. 测试插入图片，七牛云存储生成外链
 3. 测试公式3.1 行内公式我是一只快乐的小跳蛙$$J(\theta) = \frac 1 2 \sum{i=1}^m (h\theta(x^{(i)})-y^{(i)})^2$$
-$AG A\Gamma$
-\(x=\frac{-b\pm\sqrt">
+出错的原因是markdown和mathjax冲突，两个下划线之间的">
 <meta property="og:image" content="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg">
-<meta property="og:updated_time" content="2017-03-23T06:49:41.901Z">
+<meta property="og:updated_time" content="2017-03-23T07:09:30.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决贡献单元搜索的整个过程">
 <meta name="twitter:description" content="1. 思维导图的力量之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。
 2. 测试插入图片，七牛云存储生成外链
 3. 测试公式3.1 行内公式我是一只快乐的小跳蛙$$J(\theta) = \frac 1 2 \sum{i=1}^m (h\theta(x^{(i)})-y^{(i)})^2$$
-$AG A\Gamma$
-\(x=\frac{-b\pm\sqrt">
+出错的原因是markdown和mathjax冲突，两个下划线之间的">
 <meta name="twitter:image" content="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg">
 
 
@@ -212,7 +211,7 @@ $AG A\Gamma$
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -222,7 +221,7 @@ $AG A\Gamma$
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -299,7 +298,7 @@ $AG A\Gamma$
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-23T10:54:31+08:00">
                 2017-03-23
@@ -339,10 +338,14 @@ $AG A\Gamma$
       
         <h2 id="1-思维导图的力量"><a href="#1-思维导图的力量" class="headerlink" title="1. 思维导图的力量"></a>1. 思维导图的力量</h2><p>之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。</p>
 <h2 id="2-测试插入图片，七牛云存储生成外链"><a href="#2-测试插入图片，七牛云存储生成外链" class="headerlink" title="2. 测试插入图片，七牛云存储生成外链"></a>2. 测试插入图片，七牛云存储生成外链</h2><p><img src="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg" alt="这里写图片描述"></p>
-<h2 id="3-测试公式"><a href="#3-测试公式" class="headerlink" title="3. 测试公式"></a>3. 测试公式</h2><h3 id="3-1-行内公式"><a href="#3-1-行内公式" class="headerlink" title="3.1 行内公式"></a>3.1 行内公式</h3><p>我是一只快乐的小跳蛙<br>$$<br>J(\theta) = \frac 1 2 \sum<em>{i=1}^m (h</em>\theta(x^{(i)})-y^{(i)})^2<br>$$</p>
+<h2 id="3-测试公式"><a href="#3-测试公式" class="headerlink" title="3. 测试公式"></a>3. 测试公式</h2><h3 id="3-1-行内公式"><a href="#3-1-行内公式" class="headerlink" title="3.1 行内公式"></a>3.1 行内公式</h3><p>我是一只快乐的小跳蛙<br>$$J(\theta) = \frac 1 2 \sum<em>{i=1}^m (h</em>\theta(x^{(i)})-y^{(i)})^2$$</p>
+<p>出错的原因是markdown和mathjax冲突，两个下划线之间的符号会被解析成斜体</p>
+<p>$$J(\theta) = \frac 1 2 \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)})^2$$</p>
 <p>$A<em>G A</em>\Gamma$</p>
+<p>$A_G A_\Gamma$</p>
 <p>\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</p>
 <p>$$\sum_{i=1}^n a_i=0$$</p>
+<p>$E=mc^2$</p>
 
       
     </div>
@@ -430,10 +433,10 @@ $AG A\Gamma$
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -454,7 +457,7 @@ $AG A\Gamma$
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -531,7 +534,7 @@ $AG A\Gamma$
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -657,6 +660,26 @@ $AG A\Gamma$
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

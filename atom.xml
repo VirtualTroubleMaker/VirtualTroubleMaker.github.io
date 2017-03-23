@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-23T02:57:21.116Z</updated>
+  <updated>2017-03-23T06:49:41.901Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,19 @@
     <link href="http://yoursite.com/2017/03/23/%E8%A7%A3%E5%86%B3%E8%B4%A1%E7%8C%AE%E5%8D%95%E5%85%83%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B/"/>
     <id>http://yoursite.com/2017/03/23/解决贡献单元搜索问题的整个过程/</id>
     <published>2017-03-23T02:54:31.504Z</published>
-    <updated>2017-03-23T02:57:21.116Z</updated>
+    <updated>2017-03-23T06:49:41.901Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-思维导图的力量"><a href="#1-思维导图的力量" class="headerlink" title="1. 思维导图的力量"></a>1. 思维导图的力量</h2><p>之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。</p>
+<h2 id="2-测试插入图片，七牛云存储生成外链"><a href="#2-测试插入图片，七牛云存储生成外链" class="headerlink" title="2. 测试插入图片，七牛云存储生成外链"></a>2. 测试插入图片，七牛云存储生成外链</h2><p><img src="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg" alt="这里写图片描述"></p>
+<h2 id="3-测试公式"><a href="#3-测试公式" class="headerlink" title="3. 测试公式"></a>3. 测试公式</h2><h3 id="3-1-行内公式"><a href="#3-1-行内公式" class="headerlink" title="3.1 行内公式"></a>3.1 行内公式</h3><p>我是一只快乐的小跳蛙<br>$$<br>J(\theta) = \frac 1 2 \sum<em>{i=1}^m (h</em>\theta(x^{(i)})-y^{(i)})^2<br>$$</p>
+<p>$A<em>G A</em>\Gamma$</p>
+<p>\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</p>
+<p>$$\sum_{i=1}^n a_i=0$$</p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h2&gt;
+      &lt;h2 id=&quot;1-思维导图的力量&quot;&gt;&lt;a href=&quot;#1-思维导图的力量&quot; class=&quot;headerlink&quot; title=&quot;1. 思维导图的力量&quot;&gt;&lt;/a&gt;1. 思维导图的力量&lt;/h2&gt;&lt;p&gt;之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要
     
     </summary>
     

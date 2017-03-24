@@ -1,42 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Trouble Is A Friend</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-23T07:09:30.726Z</updated>
+  <updated>2017-03-24T01:00:06.571Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Visual Trouble Maker</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>解决贡献单元搜索的整个过程</title>
-    <link href="http://yoursite.com/2017/03/23/%E8%A7%A3%E5%86%B3%E8%B4%A1%E7%8C%AE%E5%8D%95%E5%85%83%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B/"/>
-    <id>http://yoursite.com/2017/03/23/解决贡献单元搜索问题的整个过程/</id>
-    <published>2017-03-23T02:54:31.504Z</published>
-    <updated>2017-03-23T07:09:30.726Z</updated>
+    <title>终于把博客搭建好了</title>
+    <link href="http://yoursite.com/2017/03/23/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3%E4%BA%86hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/03/23/完美解决了hexo中使用数学公式的问题/</id>
+    <published>2017-03-23T14:39:51.309Z</published>
+    <updated>2017-03-24T01:00:06.571Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-思维导图的力量"><a href="#1-思维导图的力量" class="headerlink" title="1. 思维导图的力量"></a>1. 思维导图的力量</h2><p>之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。</p>
-<h2 id="2-测试插入图片，七牛云存储生成外链"><a href="#2-测试插入图片，七牛云存储生成外链" class="headerlink" title="2. 测试插入图片，七牛云存储生成外链"></a>2. 测试插入图片，七牛云存储生成外链</h2><p><img src="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg" alt="这里写图片描述"></p>
-<h2 id="3-测试公式"><a href="#3-测试公式" class="headerlink" title="3. 测试公式"></a>3. 测试公式</h2><h3 id="3-1-行内公式"><a href="#3-1-行内公式" class="headerlink" title="3.1 行内公式"></a>3.1 行内公式</h3><p>我是一只快乐的小跳蛙<br>$$J(\theta) = \frac 1 2 \sum<em>{i=1}^m (h</em>\theta(x^{(i)})-y^{(i)})^2$$</p>
-<p>出错的原因是markdown和mathjax冲突，两个下划线之间的符号会被解析成斜体</p>
-<p>$$J(\theta) = \frac 1 2 \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)})^2$$</p>
-<p>$A<em>G A</em>\Gamma$</p>
-<p>$A_G A_\Gamma$</p>
-<p>\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</p>
-<p>$$\sum_{i=1}^n a_i=0$$</p>
-<p>$E=mc^2$</p>
+    <content type="html"><![CDATA[<h2 id="方法一在一些网站生成图片格式的公式之后插入">方法一：在一些网站生成图片格式的公式之后插入</h2>
+<p>缺点：加载太多的图片，费流量，影响速度。显示效果和网速有很大的关系。 ## 方法二：pandoc</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1-思维导图的力量&quot;&gt;&lt;a href=&quot;#1-思维导图的力量&quot; class=&quot;headerlink&quot; title=&quot;1. 思维导图的力量&quot;&gt;&lt;/a&gt;1. 思维导图的力量&lt;/h2&gt;&lt;p&gt;之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要
+      &lt;h2 id=&quot;方法一在一些网站生成图片格式的公式之后插入&quot;&gt;方法一：在一些网站生成图片格式的公式之后插入&lt;/h2&gt;
+&lt;p&gt;缺点：加载太多的图片，费流量，影响速度。显示效果和网速有很大的关系。 ## 方法二：pandoc&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解决贡献单元搜索的整个过程</title>
+    <link href="http://yoursite.com/2017/03/23/%E8%A7%A3%E5%86%B3%E8%B4%A1%E7%8C%AE%E5%8D%95%E5%85%83%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B/"/>
+    <id>http://yoursite.com/2017/03/23/解决贡献单元搜索问题的整个过程/</id>
+    <published>2017-03-23T02:54:31.504Z</published>
+    <updated>2017-03-23T14:24:15.045Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="思维导图的力量">1. 思维导图的力量</h2>
+<p>之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。 ## 2. 测试插入图片，七牛云存储生成外链 <img src="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg" alt="这里写图片描述"> ## 3. 测试公式 ### 3.1 行内公式 我是一只快乐的小跳蛙 <span class="math inline">\(J(\theta) = \frac 1 2 \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)})^2\)</span></p>
+<p>出错的原因是markdown和mathjax冲突，两个下划线之间的符号会被解析成斜体</p>
+<p><span class="math display">\[J(\theta) = \frac 1 2 \sum\_{i=1}^m (h\_\theta(x^{(i)})-y^{(i)})^2\]</span></p>
+<p><span class="math inline">\(A_G A_\Gamma\)</span></p>
+<p><span class="math inline">\(A\_G A\_\Gamma\)</span></p>
+<p>\(x=\)</p>
+<p>行内公式可以采用两种方式： - <span class="math inline">\(公式\)</span> - \(公式\)</p>
+<p><span class="math display">\[\sum_{i=1}^n a_i=0\]</span></p>
+<p><span class="math inline">\(E=mc^2\)</span></p>
+<p><span class="math display">\[\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial t}+v\frac{\partial u}{\partial y}=-\frac{1}{\rho}\frac{\partial P}{\partial x}+v\left ( \frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2}\right )+F\]</span></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;思维导图的力量&quot;&gt;1. 思维导图的力量&lt;/h2&gt;
+&lt;p&gt;之前知道思维导图这个软件，但是没有意识去运用这个工具，感觉自己的脑子够用，不需要使用它。 ## 2. 测试插入图片，七牛云存储生成外链 &lt;img src=&quot;http://on90oqgbe.bkt.clou
     
     </summary>
     
@@ -48,9 +72,10 @@
     <link href="http://yoursite.com/2017/03/19/%E7%BB%88%E4%BA%8E%E6%90%AD%E5%BB%BA%E5%A5%BD%E4%BA%86/"/>
     <id>http://yoursite.com/2017/03/19/终于搭建好了/</id>
     <published>2017-03-19T15:44:50.263Z</published>
-    <updated>2017-03-19T15:58:10.682Z</updated>
+    <updated>2017-03-23T07:44:24.371Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="2017年3月19日23-45-37"><a href="#2017年3月19日23-45-37" class="headerlink" title="2017年3月19日23:45:37"></a>2017年3月19日23:45:37</h2><p>刚才终于把博客给搭建好了，中间也会出现各种各样的问题。慢慢改进。</p>
+    <content type="html"><![CDATA[<h2 id="年3月19日234537">2017年3月19日23:45:37</h2>
+<p>刚才终于把博客给搭建好了，中间也会出现各种各样的问题。慢慢改进。</p>
 <p>只有周末的时间才能用来维护这个博客</p>
 <p>明天就是周一了，要开始做科研的任务了。今天就写道这里。下次记得试试cmder的full版本</p>
 <p>本来以为写完这个博客就结束了，没想到又遇到了中文编码的问题，应该解决了</p>
@@ -60,7 +85,10 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;2017年3月19日23-45-37&quot;&gt;&lt;a href=&quot;#2017年3月19日23-45-37&quot; class=&quot;headerlink&quot; title=&quot;2017年3月19日23:45:37&quot;&gt;&lt;/a&gt;2017年3月19日23:45:37&lt;/h2&gt;&lt;p&gt;刚才终于把博
+      &lt;h2 id=&quot;年3月19日234537&quot;&gt;2017年3月19日23:45:37&lt;/h2&gt;
+&lt;p&gt;刚才终于把博客给搭建好了，中间也会出现各种各样的问题。慢慢改进。&lt;/p&gt;
+&lt;p&gt;只有周末的时间才能用来维护这个博客&lt;/p&gt;
+&lt;p&gt;明天就是周一了，要开始做科研的任务了。今天就写
     
     </summary>
     
@@ -75,13 +103,18 @@
     <updated>2017-03-19T14:56:17.527Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     

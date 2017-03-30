@@ -1,0 +1,745 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Trouble Is A Friend" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="引入
+初学c++时main函数的形参列表都是空的： 1234int main()&amp;#123;    ...&amp;#125;
+然而，有时我们确实需要向main传递实参，一种常见的情况是用户通过设置一组选项来确定函数所要执行的操作。通过下面两个形参，我们可以向main函数传递一个或者多个参数。 1234int main(int argc, char * argv[])&amp;#123;    ...&amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++中main函数的参数">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/c++中main函数的参数/index.html">
+<meta property="og:site_name" content="Trouble Is A Friend">
+<meta property="og:description" content="引入
+初学c++时main函数的形参列表都是空的： 1234int main()&amp;#123;    ...&amp;#125;
+然而，有时我们确实需要向main传递实参，一种常见的情况是用户通过设置一组选项来确定函数所要执行的操作。通过下面两个形参，我们可以向main函数传递一个或者多个参数。 1234int main(int argc, char * argv[])&amp;#123;    ...&amp;#12">
+<meta property="og:updated_time" content="2017-03-30T15:52:41.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c++中main函数的参数">
+<meta name="twitter:description" content="引入
+初学c++时main函数的形参列表都是空的： 1234int main()&amp;#123;    ...&amp;#125;
+然而，有时我们确实需要向main传递实参，一种常见的情况是用户通过设置一组选项来确定函数所要执行的操作。通过下面两个形参，我们可以向main函数传递一个或者多个参数。 1234int main(int argc, char * argv[])&amp;#123;    ...&amp;#12">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/30/c++中main函数的参数/"/>
+
+
+
+
+
+  <title> c++中main函数的参数 | Trouble Is A Friend </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Trouble Is A Friend</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/c++中main函数的参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visual Trouble Maker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Trouble Is A Friend">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                c++中main函数的参数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T22:28:18+08:00">
+                2017-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="引入">引入</h1>
+<p>初学c++时main函数的形参列表都是空的： <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然而，有时我们确实需要向main传递实参，一种常见的情况是用户通过设置一组选项来确定函数所要执行的操作。通过下面两个形参，我们可以向main函数传递一个或者多个参数。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第二个形参argv是一个数组，它的元素是指向C风格字符串的指针；第一个形参argc表示数组中字符串的数量。因为第二个形参是数组，所以main函数也可以定义成： <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中argv指向char*。 当实参传给main函数之后，argv的第一个元素指向程序的名字或者一个空字符串，接下来的元素依次传递给命令行提供的实参。</p>
+<h1 id="讨论">讨论</h1>
+<h2 id="测试main函数形参列表中的argv数组">测试main函数形参列表中的argv数组</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArg.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"程序名称："</span> &lt;&lt; argv[<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"第一个参数："</span> &lt;&lt; argv[<span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"第二个参数："</span> &lt;&lt; argv[<span class="number">2</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"第三个参数："</span> &lt;&lt; argv[<span class="number">3</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>TestMainArg.cpp源文件存放在G:Studio，打开Visual Studio 2015自带的VS2015开发人员命令提示： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">D:\Microsoft Visual Studio 14.0&gt;G:</div><div class="line">G:\&gt;cd G:\Visual Studio\Projects</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArg.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArg.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArg.exe</div><div class="line">TestMainArg.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArg.exe arg1 arg2 arg3</div><div class="line">程序名称：TestMainArg.exe</div><div class="line">第一个参数：arg1</div><div class="line">第二个参数：arg2</div><div class="line">第三个参数：arg3</div></pre></td></tr></table></figure></p>
+<p>解释： 这台电脑中Visual Studio 2015安装在D:Visual Studio 14.0目录下； 执行cl -EHsc TestMainArg.cpp操作后，会在源文件所在目录下生成两个文件：TestMainArg.obj和TestMainArg.exe</p>
+<h2 id="测试数值作为main函数的实参">测试数值作为main函数的实参</h2>
+<p>因为参数argv数组中的元素是字符串，如果我们在命令行中传入数字作为参数，我们需要在程序中将这些字符串转换为数值。C/C++编译器为我们提供了一些转换函数，可以用atoi()函数把字符串转换为整形。同样，可以用atof()函数把字符串转换为double类型。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArgNum.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">double</span> operand1, operand2, addition;</div><div class="line"></div><div class="line">	<span class="comment">//operand1 = atoi( argv[1] );</span></div><div class="line">	<span class="comment">//operand2 = atoi( argv[2] );</span></div><div class="line">	operand1 = atof(argv[<span class="number">1</span>]);<span class="comment">/*转换*/</span></div><div class="line">	operand2 = atof(argv[<span class="number">2</span>]);</div><div class="line">	addition = operand1 + operand2;</div><div class="line"></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"First Number: "</span> &lt;&lt; operand1 &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Second Number: "</span> &lt;&lt; operand2 &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; Operand1 &lt;&lt; <span class="string">" + "</span> &lt;&lt; Operand2 &lt;&lt; <span class="string">" = "</span> &lt;&lt; addition &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArgNum.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArgNum.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArgNum.exe</div><div class="line">TestMainArgNum.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArgNum.exe 16.5 2.1</div><div class="line">First Number: 16.5</div><div class="line">Second Number: 2.1</div><div class="line">16.5 + 2.1 = 18.6</div></pre></td></tr></table></figure>
+<h2 id="测试字符串作为main函数的实参">测试字符串作为main函数的实参</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArgStr.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstringt.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> sentence[<span class="number">40</span>];</div><div class="line">	<span class="built_in">strcpy</span>(sentence, argv[<span class="number">1</span>]);<span class="comment">/*strcpy：将字符串复制到字符数组中*/</span></div><div class="line"></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"You typed "</span> &lt;&lt; sentence &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArgStr.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArgStr.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArgStr.exe</div><div class="line">TestMainArgStr.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArgStr.exe VirtualTroubleMaker.github.io</div><div class="line">You typed VirtualTroubleMaker.github.io</div></pre></td></tr></table></figure>
+<h2 id="测试数值和字符串混合作为main函数的实参">测试数值和字符串混合作为main函数的实参</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArgStrNum.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> fullName[<span class="number">40</span>], strGender[<span class="number">20</span>];</div><div class="line">	<span class="keyword">char</span> charGender[<span class="number">10</span>];</div><div class="line">	<span class="keyword">float</span> salary;</div><div class="line"></div><div class="line">	<span class="built_in">strcpy</span>(fullName, argv[<span class="number">1</span>]);</div><div class="line">	salary = atof(argv[<span class="number">2</span>]);</div><div class="line">	<span class="built_in">strcpy</span>(charGender, argv[<span class="number">3</span>]);</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"charGender:"</span> &lt;&lt; charGender &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (charGender == <span class="string">"m"</span> || charGender == <span class="string">"M"</span>)</div><div class="line">		<span class="built_in">strcpy</span>(strGender, <span class="string">"Male"</span>);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (charGender == <span class="string">"f"</span> || charGender == <span class="string">"F"</span>)</div><div class="line">		<span class="built_in">strcpy</span>(strGender, <span class="string">"Female"</span>);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">strcpy</span>(strGender, <span class="string">"Unknown Gender"</span>);</div><div class="line"></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Employee Information: "</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Full Name: "</span> &lt;&lt; fullName &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Gender: "</span> &lt;&lt; strGender &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Salary: "</span> &lt;&lt; salary &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArgStrNum.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArgStrNum.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArgStrNum.exe</div><div class="line">TestMainArgStrNum.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArgStrNum.exe VirtualTroubleMaker.github.io 666 M</div><div class="line">charGender:M</div><div class="line">Employee Information:</div><div class="line">Full Name: VirtualTroubleMaker.github.io</div><div class="line">Gender: Unknown Gender</div><div class="line">Salary: 666</div></pre></td></tr></table></figure>
+<h1 id="总结">总结</h1>
+<p>现在还有一点没弄明白： 为什么最后一个程序输出的是：Gender: Unknown Gender</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/25/比较有用的网站/" rel="next" title="比较有用的网站">
+                <i class="fa fa-chevron-left"></i> 比较有用的网站
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg"
+               alt="Visual Trouble Maker" />
+          <p class="site-author-name" itemprop="name">Visual Trouble Maker</p>
+           
+              <p class="site-description motion-element" itemprop="description">身体和灵魂 总有一个要在路上</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引入"><span class="nav-number">1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#讨论"><span class="nav-number">2.</span> <span class="nav-text">讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试main函数形参列表中的argv数组"><span class="nav-number">2.1.</span> <span class="nav-text">测试main函数形参列表中的argv数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试数值作为main函数的实参"><span class="nav-number">2.2.</span> <span class="nav-text">测试数值作为main函数的实参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试字符串作为main函数的实参"><span class="nav-number">2.3.</span> <span class="nav-text">测试字符串作为main函数的实参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试数值和字符串混合作为main函数的实参"><span class="nav-number">2.4.</span> <span class="nav-text">测试数值和字符串混合作为main函数的实参</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Visual Trouble Maker</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

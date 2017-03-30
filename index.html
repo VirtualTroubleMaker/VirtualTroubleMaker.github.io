@@ -292,6 +292,144 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/c++中main函数的参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visual Trouble Maker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Trouble Is A Friend">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/30/c++中main函数的参数/" itemprop="url">
+                  c++中main函数的参数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T22:28:18+08:00">
+                2017-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引入">引入</h1>
+<p>初学c++时main函数的形参列表都是空的： <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然而，有时我们确实需要向main传递实参，一种常见的情况是用户通过设置一组选项来确定函数所要执行的操作。通过下面两个形参，我们可以向main函数传递一个或者多个参数。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第二个形参argv是一个数组，它的元素是指向C风格字符串的指针；第一个形参argc表示数组中字符串的数量。因为第二个形参是数组，所以main函数也可以定义成： <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中argv指向char*。 当实参传给main函数之后，argv的第一个元素指向程序的名字或者一个空字符串，接下来的元素依次传递给命令行提供的实参。</p>
+<h1 id="讨论">讨论</h1>
+<h2 id="测试main函数形参列表中的argv数组">测试main函数形参列表中的argv数组</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArg.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"程序名称："</span> &lt;&lt; argv[<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"第一个参数："</span> &lt;&lt; argv[<span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"第二个参数："</span> &lt;&lt; argv[<span class="number">2</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"第三个参数："</span> &lt;&lt; argv[<span class="number">3</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>TestMainArg.cpp源文件存放在G:Studio，打开Visual Studio 2015自带的VS2015开发人员命令提示： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">D:\Microsoft Visual Studio 14.0&gt;G:</div><div class="line">G:\&gt;cd G:\Visual Studio\Projects</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArg.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArg.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArg.exe</div><div class="line">TestMainArg.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArg.exe arg1 arg2 arg3</div><div class="line">程序名称：TestMainArg.exe</div><div class="line">第一个参数：arg1</div><div class="line">第二个参数：arg2</div><div class="line">第三个参数：arg3</div></pre></td></tr></table></figure></p>
+<p>解释： 这台电脑中Visual Studio 2015安装在D:Visual Studio 14.0目录下； 执行cl -EHsc TestMainArg.cpp操作后，会在源文件所在目录下生成两个文件：TestMainArg.obj和TestMainArg.exe</p>
+<h2 id="测试数值作为main函数的实参">测试数值作为main函数的实参</h2>
+<p>因为参数argv数组中的元素是字符串，如果我们在命令行中传入数字作为参数，我们需要在程序中将这些字符串转换为数值。C/C++编译器为我们提供了一些转换函数，可以用atoi()函数把字符串转换为整形。同样，可以用atof()函数把字符串转换为double类型。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArgNum.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">double</span> operand1, operand2, addition;</div><div class="line"></div><div class="line">	<span class="comment">//operand1 = atoi( argv[1] );</span></div><div class="line">	<span class="comment">//operand2 = atoi( argv[2] );</span></div><div class="line">	operand1 = atof(argv[<span class="number">1</span>]);<span class="comment">/*转换*/</span></div><div class="line">	operand2 = atof(argv[<span class="number">2</span>]);</div><div class="line">	addition = operand1 + operand2;</div><div class="line"></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"First Number: "</span> &lt;&lt; operand1 &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Second Number: "</span> &lt;&lt; operand2 &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; Operand1 &lt;&lt; <span class="string">" + "</span> &lt;&lt; Operand2 &lt;&lt; <span class="string">" = "</span> &lt;&lt; addition &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArgNum.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArgNum.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArgNum.exe</div><div class="line">TestMainArgNum.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArgNum.exe 16.5 2.1</div><div class="line">First Number: 16.5</div><div class="line">Second Number: 2.1</div><div class="line">16.5 + 2.1 = 18.6</div></pre></td></tr></table></figure>
+<h2 id="测试字符串作为main函数的实参">测试字符串作为main函数的实参</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArgStr.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstringt.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> sentence[<span class="number">40</span>];</div><div class="line">	<span class="built_in">strcpy</span>(sentence, argv[<span class="number">1</span>]);<span class="comment">/*strcpy：将字符串复制到字符数组中*/</span></div><div class="line"></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"You typed "</span> &lt;&lt; sentence &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArgStr.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArgStr.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArgStr.exe</div><div class="line">TestMainArgStr.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArgStr.exe VirtualTroubleMaker.github.io</div><div class="line">You typed VirtualTroubleMaker.github.io</div></pre></td></tr></table></figure>
+<h2 id="测试数值和字符串混合作为main函数的实参">测试数值和字符串混合作为main函数的实参</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*TestMainArgStrNum.cpp*/</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> fullName[<span class="number">40</span>], strGender[<span class="number">20</span>];</div><div class="line">	<span class="keyword">char</span> charGender[<span class="number">10</span>];</div><div class="line">	<span class="keyword">float</span> salary;</div><div class="line"></div><div class="line">	<span class="built_in">strcpy</span>(fullName, argv[<span class="number">1</span>]);</div><div class="line">	salary = atof(argv[<span class="number">2</span>]);</div><div class="line">	<span class="built_in">strcpy</span>(charGender, argv[<span class="number">3</span>]);</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"charGender:"</span> &lt;&lt; charGender &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (charGender == <span class="string">"m"</span> || charGender == <span class="string">"M"</span>)</div><div class="line">		<span class="built_in">strcpy</span>(strGender, <span class="string">"Male"</span>);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (charGender == <span class="string">"f"</span> || charGender == <span class="string">"F"</span>)</div><div class="line">		<span class="built_in">strcpy</span>(strGender, <span class="string">"Female"</span>);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">strcpy</span>(strGender, <span class="string">"Unknown Gender"</span>);</div><div class="line"></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Employee Information: "</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Full Name: "</span> &lt;&lt; fullName &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Gender: "</span> &lt;&lt; strGender &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Salary: "</span> &lt;&lt; salary &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">G:\Visual Studio\Projects&gt;cl -EHsc TestMainArgStrNum.cpp</div><div class="line">用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版</div><div class="line">版权所有(C) Microsoft Corporation。保留所有权利。</div><div class="line"></div><div class="line">TestMainArgStrNum.cpp</div><div class="line">Microsoft (R) Incremental Linker Version 14.00.24210.0</div><div class="line">Copyright (C) Microsoft Corporation.  All rights reserved.</div><div class="line"></div><div class="line">/out:TestMainArgStrNum.exe</div><div class="line">TestMainArgStrNum.obj</div><div class="line"></div><div class="line">G:\Visual Studio\Projects&gt;TestMainArgStrNum.exe VirtualTroubleMaker.github.io 666 M</div><div class="line">charGender:M</div><div class="line">Employee Information:</div><div class="line">Full Name: VirtualTroubleMaker.github.io</div><div class="line">Gender: Unknown Gender</div><div class="line">Salary: 666</div></pre></td></tr></table></figure>
+<h1 id="总结">总结</h1>
+<p>现在还有一点没弄明白： 为什么最后一个程序输出的是：Gender: Unknown Gender</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/比较有用的网站/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -418,6 +556,170 @@
 <ol style="list-style-type: decimal">
 <li><a href="http://www.bukop.com/" target="_blank" rel="external">http://www.bukop.com/ 全球各种最新的商业模式，让你见识多多</a></li>
 </ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/软件版本号的界别：GA、RC、alpha、beta等详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visual Trouble Maker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on90oqgbe.bkt.clouddn.com/head%20portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Trouble Is A Friend">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/25/软件版本号的界别：GA、RC、alpha、beta等详解/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T15:18:46+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>（1）RC：(Release　Candidate) 　　Candidate是候选人的意思，用在软件上就是候选版本。Release.Candidate.就是发行候选版本。和Beta版最大的差别在于Beta阶段会一直加入新的功能，但是到了RC版本，几乎就不会加入新的功能了，而主要着重于除错! 是最终发放给用户的最接近正式版的版本，发行后改正bug就是正式版了，就是正式版之前的最后一个测试版 （2）GA：（general availability）general:一般，availability可用性 比如：Apache Struts 2 GA 这是Apache Struts 2首次发行稳定的版本，GA意味着General Availability，也就是官方开始推荐广泛使用了。 ————————— Alpha:内部测试版 Beta:外部测试版 Build:内部标号 Corporation或Enterprise企业版 Delux:豪华版 (deluxe: 豪华的，华丽的) DEMO演示版，一般会有功能限制 Free:免费版 Full:完全版 Final:正式版 Pro(professional):专业版 Plus:加强版 Retail:零售版 Release发行版，有时间限制 Shareware共享版，虽然不会要求注册但是一般也有功能限制 SR:修正版 Trial:试用版（一般有时间或者功能限制）</p>
+<p>alpha、beta、gamma 用来标识测试的阶段和范围 alpha: 是指内测，即现在说的CB，指开发团队内部测试的版本或者有限用户体验测试版本; beta: 是指公测，即针对所有用户公开的测试版本; gamma: 是beta 版做过一些修改，成为正式发布的候选版本（Release Candidate）</p>
+<p>RTM：(Release to Manufacture)是给工厂大量压片的版本，内容跟正式版是一样的，不过RTM版也有出限制、评估版的。但是和正式版本的主要程序代码都是一样的。</p>
+<p>OEM：是给计算机厂商随着计算机贩卖的，也就是随机版。只能随机器出货，不能零售。只能全新安装，不能从旧有操作系统升级。包装不像零售版精美，通常只有一面CD和说明书(授权书)。 EVAL：而流通在网络上的EVAL版，与“评估版”类似，功能上和零售版没有区别。</p>
+<p>RTL：Retail(零售版)是真正的正式版，正式上架零售版。在安装盘的i386文件夹里有一个eula.txt，最后有一行EULAID，就是你的 版本。比如简体中文正式版是EULAID:WX.4_PRO_RTL_CN，繁体中文正式版是WX.4_PRO_RTL_TW。其中：如果是WX.开头是 正式版，WB.开头是测试版。_PRE，代表家庭版；_PRO，代表专业版。 Demo版(演示版)：DEMO是英语单词demonstration的缩写,演示版,试用版,主要是演示正式软件的部分功能，用户可以从中得知软件的基本操作，为正式产品的发售扩大影响。如果是游戏的话，则只有一两个关卡可以玩。该版本也可以从Internet上免费下载。 还有在音乐中,Demo盘,Demo带,都是表示试听的意思. ———————————————– Enhance版(增强版或加强版)：如果是一般软件，一般称作“增强版”，会加入一些实用的新功能。如果是游戏，一般称作“加强版”，会加入一些新的游戏场景和游戏情节等。这是正式发售的版本。</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">KB:</td>
+</tr>
+<tr class="even">
+<td align="left">KB是微软对补丁的命名方式，是Knowledge Base(知识库)的简称。</td>
+</tr>
+<tr class="odd">
+<td align="left">其指的是某个补丁对应微软知识库中哪一篇文章.。</td>
+</tr>
+<tr class="even">
+<td align="left">例如KB888111，就是对应知识库中888111号文章。</td>
+</tr>
+<tr class="odd">
+<td align="left">现在一般用来表示补丁,KB1,KB2,KB3……</td>
+</tr>
+<tr class="even">
+<td align="left">例如:QQ2008KB3</td>
+</tr>
+</tbody>
+</table>
+<p>SP: 升级补丁包Service Pack 的简称 如Windows XP SP2等。</p>
+<p>最近由于工作需要经常要去SVN上拉开源项目的源码，对项目的后面所带的BETA、ALPHA、RC等版本号所表示的意义不是很了解，因此不知道拉那个目录好。现在特地去查找了资料，</p>
+<p>对版本号的意义加以说明。</p>
+<pre><code>      Alpha：
+                Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是测试人员,否则不建议使用.是希腊字母的第一位,表示最初级的版本，alpha 就是α，beta 就是β ，alpha 版就是比</code></pre>
+<p>beta还早的测试版，一般都是内部测试的版本。</p>
+<pre><code>     Beta:
+               该版本相对于α版已有了很大的改进，消除了严重的错误，但还是存在着一缺陷，需要经过多次测试来进一步消除。这个阶段的版本会一直加入新的功能。
+
+     RC：(Release Candidate)
+
+              Candidate是候选人的意思，用在软件上就是候选版本。Release.Candidate.就是发行候选版本。和Beta版最大的差别在于Beta阶段会一直加入新的功能，但是到了RC版本，几乎</code></pre>
+<p>就不会加入新的功能了，而主要着重于除错! RC版本是最终发放给用户的最接近正式版的版本，发行后改正bug就是正式版了，就是正式版之前的最后一个测试版。</p>
+<pre><code>     GA：（general availability）
+
+              比如：Apache Struts 2 GA这是Apache Struts 2首次发行稳定的版本，GA意味着General Availability，也就是官方开始推荐广泛使用了。
+
+     Release:
+
+              该版本意味“最终版本”，在前面版本的一系列测试版之后，终归会有一个正式版本，是最终交付用户使用的一个版本。该版本有时也称为标准版。一般情况下，Release不会以单词形式出现在软件封面上，取而代之的是符号(R)。</code></pre>
 
           
         
@@ -1147,7 +1449,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
